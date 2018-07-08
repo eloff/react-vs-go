@@ -1,0 +1,69 @@
+#week, .hour {
+	display: flex;
+}
+
+.reserved {
+	background: #fee;
+}
+
+.past {
+	color: #fee;
+}
+
+.hour a, .hour button {
+	background: #dfd;
+}
+
+.mine {
+	background: #00f;
+	color: white;
+}
+
+.hour a, .hour button, .hour div {
+	padding: 5px 10px;
+}
+
+.day {
+	margin: 4px;
+}
+
+.day h4 {
+	text-align: center;
+}
+
+.next, .prev {
+	display: block;
+	margin: 20px 10px;
+	font-size: 20px;
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    /* inherit font & color from ancestor */
+    font: inherit;
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    /* Corrects inability to style clickable `input` types in iOS */
+	-webkit-appearance: none;
+
+	color: blue;
+	text-decoration: underline;
+}
+
+button:focus, button:active {
+	border: none;
+	outline: none;
+	color: red;
+}
+
+button:hover {
+	text-decoration: none;
+}

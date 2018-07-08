@@ -1,0 +1,47 @@
+{{define "AptSlot"}}
+	{{ if .Data.Now.After .Slot.Time }}
+		<div class="reserved past">00:00</div>
+	{{ else }}
+		{{ if .Slot.Available }}
+			<a href="{{ .CreateAppointmentURL }}&redirect=1">{{ .Slot.DisplayTime }}</a>
+		{{ else if eq .Slot.ClientID .Data.ClientID }}
+			<div class="mine">{{ .Slot.DisplayTime }}</div>
+		{{ else }}
+			<div class="reserved">{{ .Slot.DisplayTime }}</div>
+		{{ end }}
+	{{ end }}
+{{ end }}
+
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<link rel="stylesheet" type="text/css" href="/resources/styles.css">
+<title>Schedule an Appointment</title>
+</head>
+<body>
+<a class="prev" href="{{ .PrevURL }}">Previous Week</a>
+<div id="week">
+	{{ with $root := . }}
+		{{ range .Days }}
+			<div class="day">
+				<h4>{{ .Date.ShortName }}</h4>
+				{{ with $slots := .AppointmentBlocks }}
+					{{ range $i, $slot := $slots }}
+						{{ if isEven $i }}
+						<div class="hour">
+							{{ template "AptSlot" newAptSlot $root . }}
+							{{ with index $slots (inc $i) }}
+								{{ template "AptSlot" newAptSlot $root . }}
+							{{ end }}
+						</div>	
+						{{ end }}
+					{{ end }}
+				{{ end }}
+			</div>
+		{{ end }}
+	{{ end }}
+</div>
+<a class="next" href="{{ .NextURL }}">Next Week</a>
+</body>
+</html>
