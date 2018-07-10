@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Schedule from './Schedule';
 
 import './static/styles.css';
 
-class App extends Component {
-  render() {
-    return (
-      <Schedule />
-    );
-  }
-}
+const App = () => <Schedule />;
 
 export default App;
