@@ -10,6 +10,6 @@ const store = createStore(
 	)
 );
 
-store.dispatch(fetchWeek(store.getState(), new Date()));
+store.dispatch(fetchWeek(new Date()));
 
 export default store;
